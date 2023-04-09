@@ -39,7 +39,7 @@ app.post("/login", async (req, res) => {
 	const hash = user.password;
 	bcrypt.compare(password, hash, function (err, result) {
 		if (result) {
-			const token = jwt.sign({ userId:user._id }, "passkey", { expiresIn: '1h' });
+			const token = jwt.sign({ userId:user._id }, "passkey", { expiresIn: '1d' });
 			res.json({msg:"login successfull",token:token})
 		} else res.json({msg:"Invalid Credentials"})
 	})
